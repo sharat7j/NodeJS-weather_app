@@ -1,0 +1,142 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <meta http-equiv="refresh" content="60" >
+    <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container">
+
+
+            <div class="nav-collapse collapse">
+                <ul class="nav">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div><!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
+<br>
+<br>
+<div class="page-header">
+    <h1 align="center">Weather</h1>
+</div>
+
+<div class="container">
+
+    <div class="weather">
+        <input type="text" class="myClass"  name="mytext" style="border-style:none"/>
+        <table class="table hovered" id="weather-table">
+            <thead>
+            <tr>
+                <th class="text-left">City</th>
+                <th class="text-left">Last Updated Time</th>
+                <th class="text-left">Temperature</th>
+                <th class="text-left">Humidity</th>
+                <th class="text-left">Weather</th>
+            </tr>
+            </thead>
+            <tbody>
+
+            </tbody>
+        </table>
+    </div>
+
+</div>
+</body>
+<script type="text/javascript">
+
+    $().ready(function(){
+        $.ajax({
+            url: "http://127.0.0.1:3000/conditions?Campbell,CA",
+            dataType: 'json',
+            success: function(data){
+                city = data.current_observation.display_location.full;
+                time = data.current_observation.observation_time.split("on");
+                temp=data.current_observation.temperature_string;
+                hum=data.current_observation.relative_humidity;
+                weather=data.current_observation.weather;
+                $('#weather-table tbody:last').append('<tr class="Campbell">');
+                $('#weather-table tbody:last').append('<td>'+city+'</td>');
+                $('#weather-table tbody:last').append('<td>'+time[1]+'</td>');
+                $('#weather-table tbody:last').append('<td>'+temp+'</td>');
+                $('#weather-table tbody:last').append('<td>'+hum+'</td>');
+                $('#weather-table tbody:last').append('<td>'+weather+'</td></tr>');
+            },
+            error: function(data) {
+                content= 'No data available';
+                $('#weather-table tbody:last').append('<tr class="Campbell"><td>'+content+'</td></tr>');
+            }
+        });
+        $.ajax({
+            url: "http://127.0.0.1:3000/conditions?Omaha,NE",
+            dataType: 'json',
+            success: function(data){
+                city = data.current_observation.display_location.full;
+                time = data.current_observation.observation_time.split("on");
+                temp=data.current_observation.temperature_string;
+                hum=data.current_observation.relative_humidity;
+                weather=data.current_observation.weather;
+                $('#weather-table tbody:last').append('<tr class="Omaha">');
+                $('#weather-table tbody:last').append('<td>'+city+'</td>');
+                $('#weather-table tbody:last').append('<td>'+time[1]+'</td>');
+                $('#weather-table tbody:last').append('<td>'+temp+'</td>');
+                $('#weather-table tbody:last').append('<td>'+hum+'</td>');
+                $('#weather-table tbody:last').append('<td>'+weather+'</td></tr>');
+            },
+            error: function(data) {
+                content= 'No data available';
+                $('#weather-table tbody:last').append('<tr class="Omaha"><td>'+content+'</td></tr>');
+            }
+        });
+        $.ajax({
+            url: "http://127.0.0.1:3000/conditions?Austin,TX",
+            dataType: 'json',
+            success: function(data){
+                city = data.current_observation.display_location.full;
+                time = data.current_observation.observation_time.split("on");
+                temp=data.current_observation.temperature_string;
+                hum=data.current_observation.relative_humidity;
+                weather=data.current_observation.weather;
+                $('#weather-table tbody:last').append('<tr class="Austin">');
+                $('#weather-table tbody:last').append('<td>'+city+'</td>');
+                $('#weather-table tbody:last').append('<td>'+time[1]+'</td>');
+                $('#weather-table tbody:last').append('<td>'+temp+'</td>');
+                $('#weather-table tbody:last').append('<td>'+hum+'</td>');
+                $('#weather-table tbody:last').append('<td>'+weather+'</td></tr>');
+            },
+            error: function(data) {
+                content= 'No data available';
+                $('#weather-table tbody:last').append('<tr class="Austin"><td>'+content+'</td></tr>');
+            }
+        });
+        $.ajax({
+            url: "http://127.0.0.1:3000/conditions?Timonium,MD",
+            dataType: 'json',
+            success: function(data){
+                city = data.current_observation.display_location.full;
+                time = data.current_observation.observation_time.split("on");
+                temp=data.current_observation.temperature_string;
+                hum=data.current_observation.relative_humidity;
+                weather=data.current_observation.weather;
+                $('#weather-table tbody:last').append('<tr class="Timonium">');
+                $('#weather-table tbody:last').append('<td>'+city+'</td>');
+                $('#weather-table tbody:last').append('<td>'+time[1]+'</td>');
+                $('#weather-table tbody:last').append('<td>'+temp+'</td>');
+                $('#weather-table tbody:last').append('<td>'+hum+'</td>');
+                $('#weather-table tbody:last').append('<td>'+weather+'</td></tr>');
+            },
+            error: function(data) {
+                content= 'No data available';
+                $('#weather-table tbody:last').append('<tr class="Timonium"><td>'+content+'</td></tr>');
+            }
+        });
+    });
+</script>
+</html>
